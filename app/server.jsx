@@ -21,6 +21,10 @@ function fetchTopics(api='topic') {
     
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
 function fetchProfiles(api='api/profile') {
   return fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
     .then(res => res.json())
@@ -68,9 +72,24 @@ function renderFullPage(renderedContent, initialState, head={
  */
 export default function render(req, res) {
 
+<<<<<<< HEAD
   Promise.all([fetchTopics(),fetchProfiles()]).then(function(apiResult){
            const authenticated = req.isAuthenticated();
             const history = createMemoryHistory();
+=======
+  // Note that req.url here should be the full URL path from
+  // the original request, including the query string.
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    } else if (renderProps) {
+
+      Promise.all([fetchTopics(),fetchProfiles()]).then(function(apiResult){
+           const authenticated = req.isAuthenticated();
+
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
             const store = configureStore({
           // reducer: {initialState}
               topic: {
@@ -84,6 +103,7 @@ export default function render(req, res) {
                 isWaiting: false
               }
             
+<<<<<<< HEAD
             },history);
 
 
@@ -143,3 +163,30 @@ export default function render(req, res) {
 
 
 };
+=======
+            });
+            const initialState = store.getState();
+
+             const renderedContent = renderToString(
+              <Provider store={store}>
+                <RoutingContext {...renderProps} />
+              </Provider>);
+
+              const renderedPage = renderFullPage(renderedContent, initialState, {
+                title: headconfig.title,
+                meta: headconfig.meta,
+                link: headconfig.link
+              });
+
+        res.status(200).send(renderedPage);
+   
+
+      })  //end of promise
+    }//end of else
+       else {
+      res.status(404).send('Not Found');
+    }
+    
+  });
+};
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415

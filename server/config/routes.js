@@ -8,6 +8,7 @@ var users = require('../controllers/users');
 var mongoose = require('mongoose');
 var _ = require('lodash');
 var Topic = mongoose.model('Topic');
+var profiles = require('../controllers/profiles')
 var App = require('../../public/assets/app.server');
 
 module.exports = function(app, passport) {
@@ -51,6 +52,10 @@ module.exports = function(app, passport) {
     topics.remove(req, res);
   });
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
   app.get('/api/profile', profiles.all);
 
   app.post('/api/profile', function(req,res){

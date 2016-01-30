@@ -6,7 +6,10 @@ import ProfileMain from 'components/profile/ProfileMain';
 import ProfileHeader from 'components/profile/ProfileHeader';
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
 /*
  * Note: This is kept as a container-level component,
  *  i.e. We should keep this as the container that does the data-fetching

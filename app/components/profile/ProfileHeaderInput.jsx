@@ -3,6 +3,10 @@ import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
 export default class ProfileHeaderInput extends Component {
   constructor(props, context) {
   	super(props, context)

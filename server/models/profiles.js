@@ -11,5 +11,9 @@ var ProfileSchema = new mongoose.Schema({
   
 });
 
+<<<<<<< HEAD
 Profile = mongoose.model('Profile', ProfileSchema);
+=======
+Topic = mongoose.model('Profile', ProfileSchema);
+>>>>>>> f359b7bd4c521e2f645dfdc504e8aac7958a0415
 
