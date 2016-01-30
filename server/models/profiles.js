@@ -14,6 +14,5 @@ var ProfileSchema = new mongoose.Schema({
 
 Profile = mongoose.model('Profile', ProfileSchema);
 
-Topic = mongoose.model('Profile', ProfileSchema);
 
 
