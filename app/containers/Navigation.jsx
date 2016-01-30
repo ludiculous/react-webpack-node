@@ -3,23 +3,60 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logOut } from 'actions/users';
 import styles from 'scss/components/_navigation';
+import AppBar from 'material-ui/lib/app-bar'
+import LeftNav from 'material-ui/lib/left-nav';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+
+
+
 
 class Navigation extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      open: false
+    }
+  }
+  handleOpen =()=> {
+  
+    this.setState({
+      open: true
+    })
+  }
+  handleClose =()=> {
+    this.setState({
+      open: false
+    })
+  }
+
+
 
   render() {
     const { dispatch } = this.props;
     return (
-      <nav className={styles.navigation} role="navigation">
-          <Link to="/" className={styles.navigation__item + ' ' + styles['navigation__item--logo']} activeClassName={styles['navigation__item--active']}>Ninja Ocean</Link>
-          { this.props.user.authenticated ? (
-            <Link onClick={()=> dispatch(logOut())}
-              className={styles.navigation__item} to="/">Logout</Link>
+      <div>
+      <AppBar
+    title="Tribes"
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+    onLeftIconButtonTouchTap={this.handleOpen}>
+     
+    </AppBar>
+
+
+     <LeftNav width={200} open={this.state.open} docked={false} onRequestChange={this.handleClose}>
+           { this.props.user.authenticated ? (
+            <MenuItem><Link onClick={()=> dispatch(logOut())}
+              className={styles.navigation__item} to="/">Logout</Link></MenuItem>
           ) : (
-            <Link className={styles.navigation__item} to="/login">Log in</Link>
+           <MenuItem><Link className={styles.navigation__item} to="/login">Log in</Link></MenuItem>
           )}
-          <Link className={styles.navigation__item} to="/dashboard">Dashboard</Link>
-          <Link to="/about" className={styles.navigation__item} activeClassName={styles['navigation__item--active']}>About</Link>
-      </nav>
+         
+          <MenuItem><Link className={styles.navigation__item} to="/profile">Profile</Link></MenuItem>
+         
+          <MenuItem><Link to="/about" className={styles.navigation__item} activeClassName={styles['navigation__item--active']}>About</Link></MenuItem>
+       </LeftNav>
+     
+      </div> 
     );
   }
 

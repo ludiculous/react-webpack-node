@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import Navigation from 'containers/Navigation';
 import 'scss/main';
 
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
+
 /*
  * React-router's <Router> component renders <Route>'s
  * and replaces `this.props.children` with the proper React Component.

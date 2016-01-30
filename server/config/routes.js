@@ -3,6 +3,7 @@
  */
 var topics = require('../controllers/topics');
 var express = require('express');
+var profiles = require('../controllers/profiles')
 var users = require('../controllers/users');
 var mongoose = require('mongoose');
 var _ = require('lodash');
@@ -49,6 +50,20 @@ module.exports = function(app, passport) {
   app.delete('/topic', function(req, res) {
     topics.remove(req, res);
   });
+
+  app.get('/api/profile', profiles.all);
+
+  app.post('/api/profile', function(req,res){
+    profiles.add(req,res);
+  })
+
+  app.put('/api/profile', function(req,res){
+    profiles.update(req, res);
+  })
+
+  app.delete('/api/profile', function(req,res){
+    profiles.remove(req, res);
+  })
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.

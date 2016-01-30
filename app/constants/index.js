@@ -16,3 +16,16 @@ export const SIGNUP_ERROR_USER = 'SIGNUP_ERROR_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOGOUT_SUCCESS_USER = 'LOGOUT_SUCCESS_USER';
 export const LOGOUT_ERROR_USER = 'LOGOUT_ERROR_USER';
+
+export const ADD_PROFILE = 'ADD_PROFILE';
+export const DELETE_PROFILE = 'DELETE_PROFILE';
+export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const EDIT_TEXT = 'EDIT_TEXT';
+export const EDIT_STAT = 'EDIT_STAT';
+export const COMPLETE_PROFILE = 'COMPLETE_PROFILE';
+export const COMPLETE_ALL = 'COMPLETE_ALL';
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const ADD_STAT = "ADD_STAT";
+
+export const SUBMIT_RESULT = "SUBMIT_RESULT";
+

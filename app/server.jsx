@@ -15,13 +15,17 @@ const clientConfig = {
 
 // Fetch and call the callback function after the response
 // is converted to returned and converted to json
-function fetchTopics(callback, api='topic') {
-  fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
+function fetchTopics(api='topic') {
+ return fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
     .then(res => res.json())
-    .then(json => callback(json));
+    
 };
 
-
+function fetchProfiles(api='api/profile') {
+  return fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
+    .then(res => res.json())
+ 
+}
 /*
  * Our html template file
  * @param {String} renderedContent
@@ -64,19 +68,29 @@ function renderFullPage(renderedContent, initialState, head={
  */
 export default function render(req, res) {
 
-  fetchTopics(apiResult => {
-    const history = createMemoryHistory();
-    const authenticated = req.isAuthenticated();
-    const store = configureStore({
-      // reducer: {initialState}
-      topic: {
-        topics: apiResult
-      },
-      user: {
-        authenticated: authenticated, 
-        isWaiting: false
-      }
-    }, history);
+  Promise.all([fetchTopics(),fetchProfiles()]).then(function(apiResult){
+           const authenticated = req.isAuthenticated();
+            const history = createMemoryHistory();
+            const store = configureStore({
+          // reducer: {initialState}
+              topic: {
+                topics: apiResult[0]
+              },
+              profiles:{
+                profiles: apiResult[1]
+              },
+              user: {
+                authenticated: authenticated, 
+                isWaiting: false
+              }
+            
+            },history);
+
+
+
+
+
+
     const routes = createRoutes(store);
 
     /*
@@ -124,4 +138,8 @@ export default function render(req, res) {
 
     });
   });
+
+
+
+
 };
