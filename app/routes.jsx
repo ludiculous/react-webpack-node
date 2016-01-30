@@ -6,7 +6,7 @@ import Vote from 'containers/Vote';
 import Profile from 'containers/Profile';
 import About from 'containers/About';
 import Login from 'containers/Login';
-import Profile from 'containers/Profile';
+
 import Dashboard from 'containers/Dashboard';
 
 /*
