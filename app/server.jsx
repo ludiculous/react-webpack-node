@@ -1,12 +1,11 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { RoutingContext, match } from 'react-router'
-import createLocation from 'history/lib/createLocation';
+import { RouterContext, match, createMemoryHistory } from 'react-router'
 import fetch from 'isomorphic-fetch';
 import { Provider } from 'react-redux';
-import routes from 'routes.jsx';
+import createRoutes from 'routes.jsx';
 import configureStore from 'store/configureStore';
-import headconfig from 'elements/Header';
+import headconfig from 'components/Meta';
 
 const clientConfig = {
   host: process.env.HOSTNAME || 'localhost',
@@ -16,22 +15,18 @@ const clientConfig = {
 
 // Fetch and call the callback function after the response
 // is converted to returned and converted to json
-
-
-
-function fetchTopics(api='topic') {
- return fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
+function fetchTopics(callback, api='topic') {
+  fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
     .then(res => res.json())
-   
+    .then(json => callback(json));
 };
+
 
 function fetchProfiles(api='api/profile') {
   return fetch(`http://${clientConfig.host}:${clientConfig.port}/${api}`)
     .then(res => res.json())
  
 }
-
-
 /*
  * Our html template file
  * @param {String} renderedContent

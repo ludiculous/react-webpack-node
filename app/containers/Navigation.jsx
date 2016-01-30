@@ -6,8 +6,6 @@ import styles from 'scss/components/_navigation';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import AppBar from 'material-ui/lib/app-bar'
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
 
 
 class Navigation extends Component {

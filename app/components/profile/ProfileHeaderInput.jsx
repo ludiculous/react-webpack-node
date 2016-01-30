@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
+
 
 
 export default class ProfileHeaderInput extends Component {
